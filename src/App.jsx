@@ -13,6 +13,8 @@ import Error from './pages/Error'
 import Auth from './pages/Auth'
 import Profile from './pages/Profile'
 import AddProfile from './components/AddProfile'
+import Registration from './pages/Registration'
+import Admin from './admin/Admin'
 import './App.css';
 
 export default function App() {
@@ -35,8 +37,10 @@ export default function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/profile" element={ <PrivetRoutes><Profile /></PrivetRoutes>} />
         <Route path="/addprofile" element={<PrivetRoutes><AddProfile /></PrivetRoutes>} />
+        <Route path="/admin" element={<Admin />} />
 
         <Route path="*" element={<Error />} />
+        <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Auth />} />
       </Routes>
     </BrowserRouter>

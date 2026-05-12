@@ -42,6 +42,13 @@ const Home = () => {
         >
           Post a Job
         </button>
+          {/* Register*/}
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/register")}
+        >
+          Register
+        </button>
 
         <button
           className="btn btn-success"

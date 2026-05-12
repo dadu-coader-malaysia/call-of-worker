@@ -28,6 +28,7 @@ const About = () => {
           <li>✔ Fast Response</li>
           <li>✔ Affordable Pricing</li>
           <li>✔ Secure Communication</li>
+          <li>✔ We check all our workers VERIFYED or not</li>
         </ul>
 
       </div>
