@@ -21,7 +21,7 @@ export default function Login() {
     });
   };
 
-  // ✅ only redirect if already logged in
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 

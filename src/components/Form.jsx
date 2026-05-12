@@ -6,10 +6,11 @@ import { api } from "../api/api";
 export default function AddPost() {
   const [formData, setFormData] = useState({
     name: "",
-    img: "",
     details: "",
-    type: "worker", // as default value
+    type: "worker",
   });
+
+  const [image, setImage] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -18,20 +19,36 @@ export default function AddPost() {
     });
   };
 
+  const handleImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await api.post("/newpost", formData);
+      const data = new FormData();
+
+      data.append("name", formData.name);
+      data.append("details", formData.details);
+      data.append("type", formData.type);
+      data.append("img", image);
+
+      const res = await api.post("/newpost", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log("Saved:", res.data);
 
       setFormData({
         name: "",
-        img: "",
         details: "",
         type: "worker",
       });
+
+      setImage(null);
 
       alert("Submitted successfully!");
     } catch (err) {
@@ -45,7 +62,10 @@ export default function AddPost() {
       <div className="row justify-content-center">
         <div className="col-12 col-md-6 col-lg-4">
 
-          <Form onSubmit={handleSubmit} className="p-3 border rounded shadow-sm">
+          <Form
+            onSubmit={handleSubmit}
+            className="p-3 border rounded shadow-sm"
+          >
 
             <h5 className="text-center mb-3">Add Post</h5>
 
@@ -60,14 +80,13 @@ export default function AddPost() {
               required
             />
 
-            {/* Image */}
+            {/* Image Upload */}
             <Form.Control
+              type="file"
               size="sm"
               className="mb-2"
-              placeholder="Image URL"
-              name="img"
-              value={formData.img}
-              onChange={handleChange}
+              accept="image/*"
+              onChange={handleImage}
               required
             />
 
@@ -84,7 +103,7 @@ export default function AddPost() {
               required
             />
 
-            {/* TYPE SELECT */}
+            {/* Type */}
             <Form.Select
               size="sm"
               className="mb-3"
@@ -96,7 +115,6 @@ export default function AddPost() {
               <option value="job">Post Job</option>
             </Form.Select>
 
-            {/* Button */}
             <Button type="submit" size="sm" className="w-100">
               Submit
             </Button>

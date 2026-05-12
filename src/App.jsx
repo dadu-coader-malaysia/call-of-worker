@@ -27,9 +27,9 @@ export default function App() {
         
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/posts" element={ <PrivetRoutes><Posts /></PrivetRoutes>} />
+          <Route path="/posts" element={ <Posts />} />
           <Route path="/services" element={ <Services />} />
-          <Route path="/newpost" element={<PrivetRoutes><NewPost /></PrivetRoutes>} />
+          <Route path="/newpost" element={<NewPost />} />
         
         <Route path="/workers" element={ <PrivetRoutes><Workers /></PrivetRoutes>} />
         <Route path="/findjob" element={<PrivetRoutes><Posts /></PrivetRoutes>} />
