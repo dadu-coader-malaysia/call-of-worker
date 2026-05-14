@@ -27,7 +27,7 @@ export default function PostCard({ post }) {
           </Card.Title>
 
           <Card.Title className="fw-small text-muted">
-            <h7 className="mt-3">{'Posted At: ' + new Date(post.createdAt).toLocaleDateString()}</h7>
+            <h5 className="mt-3">{'Posted At: ' + new Date(post.createdAt).toLocaleDateString()}</h5>
           </Card.Title>
           
 
