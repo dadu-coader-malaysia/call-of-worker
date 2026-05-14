@@ -10,7 +10,7 @@ export default function PostList() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await api.get("/posts"); // backend API
+        const res = await api.get("/post"); // backend API
         setPosts(res.data);
       } catch (err) {
         console.log(err);

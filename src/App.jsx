@@ -31,7 +31,7 @@ export default function App() {
           <Route path="/services" element={ <Services />} />
           <Route path="/newpost" element={<NewPost />} />
         
-        <Route path="/workers" element={ <PrivetRoutes><Workers /></PrivetRoutes>} />
+        <Route path="/workers" element={ <Workers />} />
         <Route path="/findjob" element={<PrivetRoutes><Posts /></PrivetRoutes>} />
         <Route path="/newpost" element={<PrivetRoutes><NewPost /></PrivetRoutes>} />
         <Route path="/auth" element={<Auth />} />

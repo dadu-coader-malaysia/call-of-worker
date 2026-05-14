@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { api } from "../api/api";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 export default function HomeCards() {
-  const [counts, setCounts] = useState({});
+  const navigate = useNavigate();
+
 
   const services = [
     {
@@ -109,18 +111,6 @@ export default function HomeCards() {
   ];
 
   // FETCH worker counts from backend
-  useEffect(() => {
-    const fetchCounts = async () => {
-      try {
-        const res = await api.get("/workers/count");
-        setCounts(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchCounts();
-  }, []);
 
   return (
     <div className="container mt-5 fade-in delay-12">
@@ -166,8 +156,8 @@ export default function HomeCards() {
                 </Card.Text>
 
                 {/* BUTTON WITH COUNT */}
-                <Button variant="primary" className="w-100 fade-in delay-12">
-                  Workers ({counts[service.title] || 0})
+                <Button onClick={() => navigate('/workers')} variant="primary" className="w-100 fade-in delay-12">
+                 View Workers
                 </Button>
 
               </Card.Body>

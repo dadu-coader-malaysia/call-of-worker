@@ -30,6 +30,7 @@ export default function AddPost() {
       const data = new FormData();
 
       data.append("name", formData.name);
+      data.append("number", formData.number);
       data.append("details", formData.details);
       data.append("type", formData.type);
       data.append("img", image);
@@ -44,6 +45,7 @@ export default function AddPost() {
 
       setFormData({
         name: "",
+        number: "",
         details: "",
         type: "worker",
       });
@@ -73,9 +75,19 @@ export default function AddPost() {
             <Form.Control
               size="sm"
               className="mb-2"
-              placeholder="Name"
+              placeholder="Job title"
               name="name"
               value={formData.name}
+              onChange={handleChange}
+              required
+            />
+
+            <Form.Control
+              size="sm"
+              className="mb-2"
+              placeholder=" Phone number include country code"
+              name="number"
+              value={formData.number}
               onChange={handleChange}
               required
             />
@@ -96,7 +108,7 @@ export default function AddPost() {
               rows={3}
               size="sm"
               className="mb-2"
-              placeholder="Details"
+              placeholder="Details: must include contact info"
               name="details"
               value={formData.details}
               onChange={handleChange}
